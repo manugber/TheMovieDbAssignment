@@ -1,5 +1,5 @@
 //
-//  The_Movie_DB_AssignmentUITests.swift
+//  TheMovieDBAssignmentUITests.swift
 //  The Movie DB AssignmentUITests
 //
 //  Created by Manuel Gonzalez Bernaldez on 12/11/24.
@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class The_Movie_DB_AssignmentUITests: XCTestCase {
+final class TheMovieDBAssignmentUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

@@ -1,0 +1,12 @@
+//
+//  TestConfig.xcconfig
+//  The Movie DB Assignment
+//
+//  Created by Manuel Gonzalez Bernaldez on 14/11/24.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+API_BASE_URL = https:/$()/api.test.themoviedb.org/3
+BEARER_TOKEN = Bearer fakeTestToken123456

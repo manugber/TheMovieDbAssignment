@@ -51,7 +51,6 @@ extension MovieEntity {
         return !(results?.isEmpty ?? true)
     }
 
-    
     func addFavourite(context: ModelContext) {
         context.insert(self)
         try? context.save()

@@ -1,5 +1,5 @@
 //
-//  The_Movie_DB_AssignmentUITestsLaunchTests.swift
+//  TheMovieDBAssignmentUITestsLaunchTests.swift
 //  The Movie DB AssignmentUITests
 //
 //  Created by Manuel Gonzalez Bernaldez on 12/11/24.
@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class The_Movie_DB_AssignmentUITestsLaunchTests: XCTestCase {
+final class TheMovieDBAssignmentUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

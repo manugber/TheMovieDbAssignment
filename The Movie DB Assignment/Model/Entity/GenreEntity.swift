@@ -18,3 +18,10 @@ class GenreEntity: Identifiable {
         self.name = genre.name
     }
 }
+
+extension GenreEntity {
+    static func getGenreNames(genres: [GenreEntity]) -> String {
+        let names = genres.map { $0.name }
+        return names.sorted().joined(separator: ", ")
+    }
+}

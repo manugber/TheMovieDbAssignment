@@ -1,0 +1,13 @@
+//
+//  ProdConfig.xcconfig
+//  The Movie DB Assignment
+//
+//  Created by Manuel Gonzalez Bernaldez on 14/11/24.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+API_BASE_URL = https:/$()/api.themoviedb.org/3
+BEARER_TOKEN = Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYWE0NThmN2M4MTc5ZTNiODI3Y2UxYTEwZTllNjQ4MiIsIm5iZiI6MTczMTQxMjI1OC4xOTAzMTQzLCJzdWIiOiI2MjJmMTYyNmUwNGFjYTAwNDVhMGQ0ODQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.cDC3OAPKr_EJY1qjiy4d-XeX_aKmcfVaHJtFRqpS1SE
+
