@@ -21,7 +21,6 @@ class GenreEntity: Identifiable {
 
 extension GenreEntity {
     static func getGenreNames(genres: [GenreEntity]) -> String {
-        let names = genres.map { $0.name }
-        return names.sorted().joined(separator: ", ")
+        return genres.map({ $0.name }).sorted().joined(separator: ", ")
     }
 }

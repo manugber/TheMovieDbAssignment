@@ -8,7 +8,7 @@
 import Foundation
 import SwiftData
 
-protocol MediaProtocol: Identifiable {
+protocol MediaProtocol: Identifiable, Hashable {
     var adult: Bool { get set }
     var backdropPath: String? { get set }
     var genres: [GenreEntity] { get set }

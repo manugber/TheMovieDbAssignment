@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class MovieEntity: Identifiable, MediaProtocol {
+class MovieEntity: MediaProtocol {
     var adult: Bool
     var backdropPath: String?
     @Relationship var genres: [GenreEntity]
