@@ -15,15 +15,12 @@ struct MediaDetailsView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @State private var isFavourite = false
     let media: any MediaProtocol
-    let backdropMaximumHeightFactor = 0.35
-    let scrollViewMinimumHeightFactor = 1.225
-    let spacerHeightFactor = 0.25
     
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .top) {
                 getMediaImage(geometry: geometry, imageType: .backdrop)
-                if isLandscape {
+                if isIphoneAndLandscape {
                     getLandscapeScrollView(geometry: geometry)
                 } else {
                     getPortraitScrollView(geometry: geometry)
@@ -35,8 +32,12 @@ struct MediaDetailsView: View {
 }
 
 extension MediaDetailsView {
-    var isLandscape: Bool {
+    var isIphoneAndLandscape: Bool {
         verticalSizeClass == .compact
+    }
+    
+    var isIpad: Bool {
+        horizontalSizeClass == .regular && verticalSizeClass == .regular
     }
     
     var titleAndMainInfo: some View {
@@ -109,7 +110,7 @@ extension MediaDetailsView {
         LinearGradient(
             stops: [
                 Gradient.Stop(color: .clear, location: 0.0),
-                Gradient.Stop(color: Color(UIColor.systemBackground), location: verticalSizeClass == .compact ? 0.20 : 0.25)
+                Gradient.Stop(color: Color(UIColor.systemBackground), location: isIphoneAndLandscape ? 0.40 : 0.25)
             ],
             startPoint: .top,
             endPoint: .bottom
@@ -130,7 +131,7 @@ extension MediaDetailsView {
                     Color.gray.opacity(0.3)
                 }
                 .frame(width: width, alignment: .top)
-                .frame(maxHeight: imageType == .backdrop ? geometry.size.height * backdropMaximumHeightFactor : nil)
+                .frame(maxHeight: imageType == .backdrop ? calculateBackdropMaxHeight(geometry: geometry) : nil)
                 .clipped()
             } else {
                 Color.gray.opacity(0.3)
@@ -142,7 +143,7 @@ extension MediaDetailsView {
         ScrollView {
             VStack {
                 Spacer()
-                    .frame(height: geometry.size.height * spacerHeightFactor)
+                    .frame(height: geometry.size.height * 0.45)
                 HStack(alignment: .top) {
                     getMediaImage(geometry: geometry, imageType: .poster)
                         .shadow(radius: 10)
@@ -156,7 +157,7 @@ extension MediaDetailsView {
                 }
             }
             .padding(8)
-            .frame(minHeight: geometry.size.height * scrollViewMinimumHeightFactor)
+            .frame(minHeight: geometry.size.height * 1.425)
             .background {
                 gradient
             }
@@ -167,7 +168,7 @@ extension MediaDetailsView {
         ScrollView {
             VStack {
                 Spacer()
-                    .frame(height: geometry.size.height * spacerHeightFactor)
+                    .frame(height: geometry.size.height * 0.20)
                 getMediaImage(geometry: geometry, imageType: .poster)
                     .shadow(radius: 10)
                     .cornerRadius(10)
@@ -177,7 +178,7 @@ extension MediaDetailsView {
                 favouriteButton
             }
             .padding(8)
-            .frame(minHeight: geometry.size.height * scrollViewMinimumHeightFactor)
+            .frame(minHeight: geometry.size.height * 1.175)
             .background {
                 gradient
             }
@@ -185,21 +186,28 @@ extension MediaDetailsView {
     }
     
     func calculateImageWidth(geometry: GeometryProxy, isBackdrop: Bool) -> Double {
-        let isIpad = horizontalSizeClass == .regular
         let parentWidth = geometry.size.width
         if isBackdrop {
             return parentWidth
-        } else {
-            if isLandscape {
-                return parentWidth * 0.2
-            } else {
-                if isIpad {
-                    return parentWidth * 0.3
-                } else {
-                    return parentWidth * 0.4
-                }
-            }
         }
+        if isIphoneAndLandscape {
+            return parentWidth * 0.2
+        }
+        if isIpad {
+            return parentWidth * 0.3
+        }
+        return parentWidth * 0.4
+    }
+    
+    func calculateBackdropMaxHeight(geometry: GeometryProxy) -> Double {
+        let parentHeight = geometry.size.height
+        if isIphoneAndLandscape {
+            return parentHeight * 0.6
+        }
+        if isIpad {
+            return parentHeight * 0.4
+        }
+        return parentHeight * 0.3
     }
 }
 

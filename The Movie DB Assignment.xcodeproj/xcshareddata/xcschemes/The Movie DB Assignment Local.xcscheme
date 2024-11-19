@@ -61,6 +61,17 @@
                ReferencedContainer = "container:The Movie DB Assignment.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4C8540342CECAE210032FC26"
+               BuildableName = "The Movie DB Assignment Tests.xctest"
+               BlueprintName = "The Movie DB Assignment Tests"
+               ReferencedContainer = "container:The Movie DB Assignment.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

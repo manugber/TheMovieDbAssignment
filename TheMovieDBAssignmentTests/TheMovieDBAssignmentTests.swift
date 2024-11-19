@@ -6,7 +6,6 @@
 //
 
 import Testing
-@testable import The_Movie_DB_Assignment
 
 struct TheMovieDBAssignmentTests {
 
